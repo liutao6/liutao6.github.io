@@ -21,21 +21,18 @@ var _hmt = _hmt || [];
   <title>吸血鬼数字算法 | 起今知行 | 思考者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="吸血鬼数字算法
-今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下
-123456789101112131415161718192021222324252627public static void main(String[] args) &amp;#123;    for (int i = 10; i &amp;lt; 100; i++) &amp;#123;">
+今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吸血鬼数字算法">
 <meta property="og:url" content="http://yoursite.com/2017/08/07/吸血鬼数字的算法小记/index.html">
 <meta property="og:site_name" content="起今知行 | 思考者">
 <meta property="og:description" content="吸血鬼数字算法
-今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下
-123456789101112131415161718192021222324252627public static void main(String[] args) &amp;#123;    for (int i = 10; i &amp;lt; 100; i++) &amp;#123;">
-<meta property="og:updated_time" content="2017-08-07T09:06:10.209Z">
+今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下">
+<meta property="og:updated_time" content="2017-08-07T09:09:02.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吸血鬼数字算法">
 <meta name="twitter:description" content="吸血鬼数字算法
-今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下
-123456789101112131415161718192021222324252627public static void main(String[] args) &amp;#123;    for (int i = 10; i &amp;lt; 100; i++) &amp;#123;">
+今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下">
   
   
     <link rel="icon" href="/favicon.png">
@@ -180,8 +177,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>吸血鬼数字算法</p>
-<p>今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    for (int i = 10; i &lt; 100; i++) &#123;</div><div class="line">        for (int j = i; j &lt; 100; j++) &#123;</div><div class="line">            int temp = i * j;</div><div class="line">            if (temp &gt; 10000 || temp &lt; 999) &#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            String[] s = String.valueOf(temp).split(&quot;&quot;);</div><div class="line">            String[] split = (i + &quot;&quot; + j).split(&quot;&quot;);</div><div class="line">            int count = 0;</div><div class="line">            for (int t1 = 0; t1 &lt; s.length; t1++) &#123;</div><div class="line">                for (int t2 = 0; t2 &lt; split.length; t2++) &#123;</div><div class="line">                    if (s[t1].equals(split[t2])) &#123;</div><div class="line">                        s[t1] = UUID.randomUUID().toString();</div><div class="line">                        split[t2] = UUID.randomUUID().toString();</div><div class="line">                        count++;</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if (count == 4) &#123;</div><div class="line">                System.out.println(temp);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>今天重新读了一遍think in java，看到关于吸血鬼算法的题目，然后翻了一下我曾经几年前写的解法，如下<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    for (int i = 10; i &lt; 100; i++) &#123;</div><div class="line">        for (int j = i; j &lt; 100; j++) &#123;</div><div class="line">            int temp = i * j;</div><div class="line">            if (temp &gt; 10000 || temp &lt; 999) &#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            String[] s = String.valueOf(temp).split(&quot;&quot;);</div><div class="line">            String[] split = (i + &quot;&quot; + j).split(&quot;&quot;);</div><div class="line">            int count = 0;</div><div class="line">            for (int t1 = 0; t1 &lt; s.length; t1++) &#123;</div><div class="line">                for (int t2 = 0; t2 &lt; split.length; t2++) &#123;</div><div class="line">                    if (s[t1].equals(split[t2])) &#123;</div><div class="line">                        s[t1] = UUID.randomUUID().toString();</div><div class="line">                        split[t2] = UUID.randomUUID().toString();</div><div class="line">                        count++;</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if (count == 4) &#123;</div><div class="line">                System.out.println(temp);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>然后看了下别人写的，感觉惨不忍睹。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] arg) &#123;</div><div class="line">       String[] ar_str1, ar_str2;</div><div class="line">       int sum = 0;</div><div class="line">       int i_val;</div><div class="line">       int count = 0;</div><div class="line">       // 双重循环穷举</div><div class="line">       for (int i = 10; i &lt; 100; i++) &#123;</div><div class="line">           for (int j = i + 1; j &lt; 100; j++) &#123;</div><div class="line">               i_val = i * j;</div><div class="line">               /*</div><div class="line">               假设val = 1000a + 100b + 10c + d, 因为满足val = x * y, 则有x = 10a + b, y = 10c + d</div><div class="line">               则val - x - y = 990a + 99b + 9c = 9 * (110a + 11b + c), 所以val - x - y能被9整除。</div><div class="line">               所以满足该条件的数字必定能被9整除，所以可以直接过滤其他数字。</div><div class="line">			*/ </div><div class="line">               if (i_val % 100 == 0 || (i_val - i - j) % 9 != 0) &#123;</div><div class="line">                   continue;</div><div class="line">               &#125;</div><div class="line">               count++;</div><div class="line">               ar_str1 = String.valueOf(i_val).split(&quot;&quot;);</div><div class="line">               ar_str2 = (String.valueOf(i) + String.valueOf(j)).split(&quot;&quot;);</div><div class="line">               Arrays.sort(ar_str1);</div><div class="line">               Arrays.sort(ar_str2);</div><div class="line">               if (Arrays.equals(ar_str1, ar_str2)) &#123;// 排序后比较,为真则找到一组</div><div class="line">                   sum++;</div><div class="line">                   System.out.println(&quot;第&quot; + sum + &quot;组: &quot; + i + &quot;*&quot; + j + &quot;=&quot; + i_val);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       System.out.println(&quot;共找到&quot; + sum + &quot;组吸血鬼数&quot;);</div><div class="line">       System.out.println(count);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
 
       
@@ -270,7 +266,7 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/08/07/linux 杂记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/07/linux杂记/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -406,6 +402,10 @@ var duoshuoQuery = {short_name:"liutao"};
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">office</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -422,18 +422,6 @@ var duoshuoQuery = {short_name:"liutao"};
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">音频</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">office</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂记</a>
               </li>
              
@@ -443,6 +431,14 @@ var duoshuoQuery = {short_name:"liutao"};
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">音频</a>
               </li>
              
               <li class="article-tag-list-item">
